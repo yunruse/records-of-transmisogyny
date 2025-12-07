@@ -2,10 +2,11 @@ from argparse import ArgumentParser
 from csv import DictReader, DictWriter
 from datetime import datetime
 from pathlib import Path
+from typing import Iterable
 
 from requests import HTTPError, ConnectionError
 
-from .tumblr import get_posts
+from .tumblr import Post, get_posts
 from .wayback import archive_job, get_job_result
 
 parser = ArgumentParser()
@@ -32,9 +33,14 @@ if posts:
 
 
 # First pass: get URLs from tumblr
-scraped_posts = get_posts(args.blog, cutoff)
+scraped_posts: Iterable[Post]
+try:
+    scraped_posts = list(get_posts(args.blog, cutoff))
+except ValueError:
+    print("Tumblr reached rate limit; attempting to archive")
+    scraped_posts = []
 
-for post in get_posts(args.blog, cutoff):
+for post in scraped_posts:
     posts.append({
         "timestamp": post['datetime'].isoformat(),
         "tags": ','.join(post['tags']),
