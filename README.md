@@ -2,9 +2,11 @@
 
 This is a record from the tumblr blog [records-of-transmisogyny](http://tumblr.com/records-of-transmisogyny) as well as [find-my-mutuals](http://tumblr.com/find-my-mutuals).
 
+Records are stored as TSVs in `records/`.
+
 Posts are archived to archive.org as soon as possible (but may be subject to ratelimiting).
 
-## Archiver tool
+## `archive` tool
 
 In the event you need to archive a blog yourself, this blog can automatically get all blog posts and put them on archive.org in case they are deleted.
 
