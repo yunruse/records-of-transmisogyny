@@ -11,7 +11,7 @@ Posts are archived to archive.org as soon as possible (but may be subject to rat
 In the event you need to archive a blog yourself, this blog can automatically get all blog posts and put them on archive.org in case they are deleted.
 
 1. Put [tumblr API keys](https://api.tumblr.com/console/calls/user/info) and [archive.org "s3" keys](https://archive.org/account/s3.php) into `tumblr.keys` and `archive.keys` respectively, each key on a newline.
-2. `pip install requests pytumblr2`
+2. `pip install requests pytumblr2 tqdm`
 3. Run `python -m archive [blogname]`, eg:
 
 ```
