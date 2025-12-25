@@ -12,11 +12,6 @@ In the event you need to archive a blog yourself, this blog can automatically ge
 
 1. Put [tumblr API keys](https://api.tumblr.com/console/calls/user/info) and [archive.org "s3" keys](https://archive.org/account/s3.php) into `tumblr.keys` and `archive.keys` respectively, each key on a newline.
 2. `pip install requests pytumblr2 tqdm`
-3. Run `python -m archive [blogname]`, eg:
-
-```
-python -m archive records-of-transmisogyny
-python -m archive find-my-mutuals
-```
+3. Run `python -m archive [blogname]`, as in `auto-archive.sh`
 
 This can be ran multiple times to fetch newer posts and to continue to archive posts, as archive.org may induce ratelimiting.
