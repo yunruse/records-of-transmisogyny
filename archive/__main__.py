@@ -19,8 +19,8 @@ parser.add_argument(
     "--records", type=Path, default="./records",
     help="The directory archive TSV files should go to.")
 parser.add_argument(
-    "--timeout", type=int, default=2,
-    help="The timeout per request (in seconds) for archive.org to avoid ratelimiting. Defaults to two seconds.")
+    "--timeout", type=int, default=10,
+    help="The timeout per request (in seconds) for archive.org to avoid ratelimiting. Default: 10")
 
 args = parser.parse_args()
 
