@@ -62,24 +62,22 @@ posts.sort(key=lambda p: p['timestamp'])
 
 # Second pass: Archive URLs (and resolve archive.org jobs)
 
-for post in tqdm(posts, "Archiving"):
-    aurl: str | None = post['archived url']
-    archived = False
-    try:
+try:
+    for post in tqdm(posts, "Archiving"):
+        aurl: str | None = post['archived url']
         if not aurl:
             post['archived url'] = archive_job(post['url'])
-            archived = True
-        
-        elif aurl.startswith("spn2"):
-            post['archived url'] = get_job_result(aurl) or aurl
-            archived = True
+            sleep(args.timeout)
 
-    except (HTTPError, ConnectionError) as e:
-        print("Not every post could be archived due to ratelimiting; try again soon")
-        print(e)
-        break
-    if archived:
-        sleep(args.timeout)
+    for post in tqdm(posts, "Getting archive results"):
+        aurl: str | None = post['archived url']
+        if aurl and aurl.startswith("spn2"):
+            post['archived url'] = get_job_result(aurl) or aurl
+            sleep(args.timeout)
+
+except (HTTPError, ConnectionError) as e:
+    print("Not every post could be archived due to ratelimiting; try again soon")
+    print(e)
 
 if posts:
     fieldnames = posts[0].keys()
