@@ -1,8 +1,8 @@
 # records-of-transmisogyny
 
-This is a record from the tumblr blog [records-of-transmisogyny](http://tumblr.com/records-of-transmisogyny) as well as [find-my-mutuals](http://tumblr.com/find-my-mutuals).
+This is a record of certain tumblr blogs which indicate a general pattern of Tumblr's systematic transmisogyny.
 
-Records are stored as TSVs in `records/`.
+Records are stored as `records/BLOGNAME.tsv`.
 
 Posts are archived to archive.org as soon as possible (but may be subject to ratelimiting).
 
